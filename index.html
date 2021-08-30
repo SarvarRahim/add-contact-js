@@ -8,9 +8,29 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body class="bg-light">
 
-</body>
+  <div class="container">
+    <div class="h1 m-0 text-center bg-info p-4 font-weight-bold text-white">Contact book</div>
+    <div class="row pt-5">
+      <section class="col-6">
+        <h2 class="mb-3">New contact form</h2>
+        <form class="js-form" action="https://echo.htmlacademy.ru" method="POST">
+          <input class="form-control mb-4 js-form-name" type="text" name="name-contact" aria-label="name contact" placeholder="Name">
+          <input class="form-control mb-4 js-form-reletionship" type="text" name="info-contact" aria-label="infofmation in user contact" placeholder="Relationship">
+          <input class="form-control mb-4 js-form-number" type="number" name="number-contact" aria-label="number contac" placeholder="Phone number">
+          <button class="btn btn-info js-button" type="submit">Add contact</button>
+        </form>
+      </section>
+      <section class="col-6">
+        <h2 class="mb-3 text-center">Contacts</h2>
+        <ul class="js-contact-list list-unstyled">
+         
+        </ul>
+      </section>
+    </div>
+  </div>
+
 <script src="js/jquery-3.6.0.min.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/main.js"></script>
