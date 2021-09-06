@@ -1,39 +1,70 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Countries</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS lesson 6</title>
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="bg-light">
+<body>
 
-  <div class="container">
-    <div class="h1 m-0 text-center bg-info p-4 font-weight-bold text-white">Contact book</div>
-    <div class="row pt-5">
-      <section class="col-12 col-sm-6">
-        <h2 class="mb-3">New contact form</h2>
-        <form class="js-form mb-4" action="https://echo.htmlacademy.ru" method="POST">
-          <input class="form-control mb-4 js-form-name" type="text" name="name-contact" aria-label="name contact" placeholder="Name">
-          <input class="form-control mb-4 js-form-reletionship" type="text" name="info-contact" aria-label="infofmation in user contact" placeholder="Relationship">
-          <input class="form-control mb-4 js-form-number" type="number" name="number-contact" aria-label="number contac" placeholder="Phone number">
-          <button class="btn btn-info js-button" type="submit">Add contact</button>
+  <div class="container-lg">
+
+    <header class="py-4 mb-3">
+      <h1 class="display-5 mb-0 text-center">Contact book</h1>
+    </header>
+
+
+    <div class="row">
+      <section class="col-md-6">
+        <h2 class="mb-3">New contact</h2>
+
+        <form class="js-new-contact-form" action="https://echo.htmlacademy.ru" method="POST">
+          <div class="mb-3">
+            <input class="form-control js-new-contact-name-input" type="text" name="name" placeholder="Name" aria-label="Name" required>
+          </div>
+          <div class="mb-3">
+            <input class="form-control js-new-contact-relationship-input" type="text" list="relationship-list" name="relationship" placeholder="Relationship" aria-label="Relationship" required>
+
+            <datalist id="relationship-list">
+              <option>Family</option>
+              <option>Friend</option>
+              <option>Colleague</option>
+              <option>Coursemate</option>
+              <option>Classmate</option>
+              <option>Apprentice</option>
+            </datalist>
+          </div>
+
+          <div class="mb-3">
+            <input class="form-control js-new-contact-phone-input" type="tel" name="phone" placeholder="Phone" aria-label="Phone" value="test" required>
+            <span class="js-warning-text text-danger d-none">Contact already exists</span>
+          </div>
+
+          <!-- Relationship -->
+          <!-- Telefon -->
+          <button class="btn btn-primary">Add contact</button>
         </form>
       </section>
-      <section class="col-12 col-sm-6">
-        <h2 class="mb-3 text-center">Contacts</h2>
-        <ul class="js-contact-list list-unstyled">
 
+      <section class="contacts col-md-6">
+        <h2 class="mb-3">Contacts</h2>
+
+        <ul class="contacts__list list-group">
+          <!-- <li class="list-group-item p-3">
+            <h3 class="h5">Falonchi Pismadonchiyev</h3>
+            <div class="mb-2">Lorem, ipsum dolor.</div>
+            <a class="btn btn-outline-success btn-sm" href="tel:+998909213711">+998 90 921 37 11</a>
+          </li> -->
         </ul>
       </section>
     </div>
+
   </div>
 
-<script src="js/jquery-3.6.0.min.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/main.js"></script>
-</body>
 
+  <script src="js/bootstrap5.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
 </html>
