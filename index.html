@@ -38,7 +38,7 @@
           </div>
 
           <div class="mb-3">
-            <input class="form-control js-new-contact-phone-input" type="tel" name="phone" placeholder="Phone" aria-label="Phone" value="test" required>
+            <input class="form-control js-new-contact-phone-input" type="tel" name="phone" placeholder="Phone" aria-label="Phone" required>
             <span class="js-warning-text text-danger d-none">Contact already exists</span>
           </div>
 
@@ -57,11 +57,21 @@
             <div class="mb-2">Lorem, ipsum dolor.</div>
             <a class="btn btn-outline-success btn-sm" href="tel:+998909213711">+998 90 921 37 11</a>
           </li> -->
+          <!-- <button class="js-clear__button btn btn-danger w-25">Clear contanct</button> -->
         </ul>
       </section>
     </div>
 
   </div>
+  <template id="contact-list-item-template">
+    <li class="contact list-group-item p-3 d-flex flex-column align-items-start">
+      <h3 class="contact__name h5"></h3>
+      <div class="contact__relationship mb-2">.</div>
+      <a class="contact__phone-link btn btn-outline-success btn-sm" href=""></a>
+      <button class="js-clear__button btn-sm btn-danger w-25 mt-2" type="button">Clear contact</button>
+    </li>
+  </template>
+
 
 
   <script src="js/bootstrap5.bundle.min.js"></script>

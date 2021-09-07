@@ -11,6 +11,7 @@ var elNewContactPhoneInput = elNewContactForm.querySelector('.js-new-contact-pho
 var elContacts = document.querySelector('.contacts');
 var elContactsList = elContacts.querySelector('.contacts__list');
 var elWarningPhone = document.querySelector('.js-warning-text');
+var elClearContactButton = document.querySelector('.js-clear__button');
 
 
 
@@ -18,38 +19,30 @@ function addContact() {
   contacts.push({
     name: elNewContactNameInput.value.trim(),
     relationship: elNewContactRelationshipInput.value.trim(),
-    phone: elNewContactPhoneInput.value.trim()
+    phone: elNewContactPhoneInput.value.trim(),
   });
 }
 
 
-function showContacts() {
+var elContactListItemTemplate = document.querySelector('#contact-list-item-template').content;
+function showContacts () {
   elContactsList.innerHTML = '';
   var elContactsFragment = document.createDocumentFragment();
 
   for (var contact of contacts) {
-    var elNewLi = document.createElement('li');
-    elNewLi.classList.add('list-group-item', 'p-3');
+    var elNewContactsItem = elContactListItemTemplate.cloneNode(true);
 
-    var elNewHeading = document.createElement('h3');
-    elNewHeading.classList.add('h5');
-    elNewHeading.textContent = contact.name;
-    elNewLi.appendChild(elNewHeading);
+    elNewContactsItem.querySelector('.contact__name').textContent = contact.name;
+    elNewContactsItem.querySelector('.contact__relationship').textContent = contact.relationship;
+    elNewContactsItem.querySelector('.contact__phone-link').textContent = contact.phone;
+    elNewContactsItem.querySelector('.contact__phone-link').href = `tel:${contact.phone}`;
 
-    var elNewRelDiv = document.createElement('div');
-    elNewRelDiv.classList.add('mb-2');
-    elNewRelDiv.textContent = contact.relationship;
-    elNewLi.appendChild(elNewRelDiv);
-
-    var elNewPhoneLink = document.createElement('a');
-    elNewPhoneLink.classList.add('btn', 'btn-outline-success', 'btn-sm');
-    elNewPhoneLink.href = contact.phone;
-    elNewPhoneLink.textContent = contact.phone;
-    elNewLi.appendChild(elNewPhoneLink);
-    elContactsFragment.appendChild(elNewLi);
-    elContactsList.appendChild(elContactsFragment);
+    elContactsFragment.appendChild(elNewContactsItem);
   }
+
+  elContactsList.appendChild(elContactsFragment);
 }
+
 
 // Form bo'lsa
 if (elNewContactForm) {
@@ -64,6 +57,9 @@ if (elNewContactForm) {
       elNewContactPhoneInput.classList.add('is-invalid');
       elWarningPhone.classList.remove('d-none');
       return;
+    }else {
+      elNewContactPhoneInput.classList.remove('is-invalid');
+      elWarningPhone.classList.add('d-none');
     }
     addContact();
     // Add contact to contacts array
@@ -75,9 +71,18 @@ if (elNewContactForm) {
     elNewContactPhoneInput.value = '';
 
     showContacts();
-    // addContact funksiyasi yordamida yangi kontaktni contactsga qo'shiladi
     // showContacts funksiyasi yordamida HTMLda kontaktlarni ko'rsatamiz
+    elContactsList.addEventListener('click', (evn) => {
+      if (evn.target.matches('.js-clear__button')) {
+        contactIndex = contacts.findIndex(contact => evn.target.closest('.contact').dataset.id === contact.phone);
+        contacts.splice(contactIndex, 1);
+        showContacts();
+      }
+    });
 
   });
 }
+
+
+
 // Form submitda amal bajariladi
