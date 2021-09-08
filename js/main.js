@@ -71,6 +71,10 @@ if (elNewContactForm) {
     elNewContactPhoneInput.value = '';
 
     showContacts();
+
+  });
+}
+
     // showContacts funksiyasi yordamida HTMLda kontaktlarni ko'rsatamiz
     elContactsList.addEventListener('click', (evn) => {
       if (evn.target.matches('.js-clear__button')) {
@@ -79,9 +83,6 @@ if (elNewContactForm) {
         showContacts();
       }
     });
-
-  });
-}
 
 
 
